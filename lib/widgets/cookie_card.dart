@@ -11,8 +11,8 @@ class CookieCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 155,
-      height: 210,
 
+      // height: 210,
       child: Stack(
         children: [
           // Container sits at the bottom as the base
@@ -123,7 +123,7 @@ class CookieCard extends StatelessWidget {
                     ),
                   ),
 
-                  Image.asset(cookie.image, height: 120, fit: BoxFit.contain),
+                  Image.asset(cookie.image, height: 160, fit: BoxFit.contain),
                 ],
               ),
             ),

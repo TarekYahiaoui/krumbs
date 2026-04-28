@@ -16,7 +16,7 @@ class CookiesData {
 
   static const List<Cookie> offers = [
     Cookie(
-      name: 'Double chocolate',
+      name: 'Double chocolat',
       price: 12,
       image: 'assets/images/cookies3.png',
     ),

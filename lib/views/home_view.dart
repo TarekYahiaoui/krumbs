@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:krumbs/constants/app_colors.dart';
 import 'package:krumbs/data/cookies_data.dart';
+import 'package:krumbs/models/cookie.dart';
 import 'package:krumbs/widgets/cookie_card.dart';
+import 'package:krumbs/widgets/offer_card.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -15,13 +17,42 @@ class HomeView extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               _buildHeader(),
-              const SizedBox(height: 24),
+              const SizedBox(height: 16),
               _buildSectionHeader(title: 'Cookies', subtitle: 'Premium'),
-              const SizedBox(height: 40),
+              const SizedBox(height: 24),
               _buildPremiumCards(),
-              const SizedBox(height: 28),
+              const SizedBox(height: 8),
+              // _buildSectionHeader(title: 'Offers', subtitle: ''),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Offers',
+                    style: const TextStyle(
+                      color: AppColors.textPrimary,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'See more',
+                      style: TextStyle(color: AppColors.primary, fontSize: 13),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 8),
+              OfferCard(
+                cookie: Cookie(
+                  name: "Double Chocolate",
+                  price: 12,
+                  image: "assets/images/cookies1.png",
+                ),
+              ),
             ],
           ),
         ),
@@ -36,9 +67,9 @@ class HomeView extends StatelessWidget {
         const Row(
           children: [
             CircleAvatar(
-              radius: 22,
+              radius: 24,
               backgroundColor: AppColors.card,
-              backgroundImage: AssetImage('assets/images/avatar.png'),
+              backgroundImage: AssetImage('assets/images/avatar.jpg'),
             ),
             SizedBox(width: 10),
             Column(
@@ -85,7 +116,7 @@ class HomeView extends StatelessWidget {
                   Text(
                     '6',
                     style: const TextStyle(
-                      color: AppColors.textSecondary,
+                      color: AppColors.textDark,
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
                     ),
@@ -93,7 +124,7 @@ class HomeView extends StatelessWidget {
                   Text(
                     'Products',
                     style: const TextStyle(
-                      color: AppColors.textSecondary,
+                      color: AppColors.textDark,
                       fontSize: 10,
                     ),
                   ),
@@ -179,11 +210,11 @@ class HomeView extends StatelessWidget {
 
   Widget _buildPremiumCards() {
     return SizedBox(
-      height: 240,
+      height: 280,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: CookiesData.premium.length,
-        separatorBuilder: (_, __) => const SizedBox(width: 14),
+        separatorBuilder: (_, __) => const SizedBox(width: 24),
         itemBuilder: (_, index) =>
             CookieCard(cookie: CookiesData.premium[index]),
       ),
